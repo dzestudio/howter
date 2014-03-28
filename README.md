@@ -1,9 +1,7 @@
 Howter
 ======
 
-**Howter** é um pequeno roteador criado para organizar a execução do código JavaScript em qualquer aplicação web. (nenhuma dependência)
-
-Para utilizá-lo, basta baixar a versão mais atualizada do arquivo e incluí-la normalmente através de uma tag `<script>`:
+**Howter** é um pequeno roteador criado para organizar a execução do código JavaScript em qualquer aplicação web. Para utilizá-lo, basta baixar a versão mais atualizada do arquivo e incluí-la normalmente através de uma tag `<script>`:
 
 ```html
 <script src="caminho/completo/até/howter.min.js"></script>
