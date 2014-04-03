@@ -15,11 +15,9 @@
     // (http://emberjs.com/guides/routing/#toc_specifying-a-root-url).
     h.rootURL = h.rootURL || '';
 
-    // Dispatch a path (location.pathname by default).
+    // Dispatch a path.
     h.dispatch = function (path) {
         var name;
-
-        path = path || global.location.pathname;
 
         for (name in routes) {
             routes[name].test(path);
