@@ -12,9 +12,6 @@
         this.path = matches.input;
         this.params = {};
 
-        // Remove the entire input from the matches.
-        matches.shift();
-
         for (i = 0; i < matches.length; i++) {
             this.params[paramNames[i] || i] = matches[i];
         }
