@@ -32,12 +32,12 @@
                 // A wildcard is a '/*' sequence in the end of the path.
                 // Inspired by Sammy.js (http://sammyjs.org/docs/routes).
                 if (wildcardMatcher.test(path)) {
-                    path = path.replace(wildcardMatcher, '(\/.+)?');
+                    path = path.replace(wildcardMatcher, '(\/.*)?');
 
                     paramNames.push('splat');
                 } else {
                     // Trailing slashes are optional
-                    path = path.replace(/\/?$/, '\/?');
+                    path = path.replace(/\/$/, '\/?');
                 }
 
                 return new RegExp('^' + path + '$');
