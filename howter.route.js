@@ -65,6 +65,9 @@
 
             for (i in this.paths) {
                 if ((matches = path.match(this.paths[i])) !== null) {
+                    // Remove the entire input from the matches.
+                    matches.shift();
+
                     // Create the context.
                     context = new h.Context(matches, paramNames);
 
