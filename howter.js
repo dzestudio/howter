@@ -19,6 +19,9 @@
     h.dispatch = function (path) {
         var name;
 
+        // Trailing slashes are not meaningful.
+        path = path.replace(/\/$/, '');
+
         for (name in routes) {
             routes[name].test(path);
         }

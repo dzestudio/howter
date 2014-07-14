@@ -36,8 +36,8 @@
 
                     paramNames.push('splat');
                 } else {
-                    // Trailing slashes are optional
-                    path = path.replace(/\/$/, '\/?');
+                    // Trailing slashes are not meaningful.
+                    path = path.replace(/\/$/, '');
                 }
 
                 return new RegExp('^' + path + '$');
