@@ -1,0 +1,9 @@
+{
+  "name": "howter",
+  "version": "0.2.0",
+  "main": "dist/howter.js",
+  "ignore": [
+    "LICENSE",
+    "README.md"
+  ]
+}
