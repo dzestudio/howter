@@ -77,7 +77,7 @@ Nesse caso, o callback será executado tanto em http://example.com/users/list qu
 
 ## Parâmetros nomeados
 
-Imagine que você queira criar uma rota para páginas de perfil de usuário cujas URLs estão no formato [http://example.com/profile/<username>](http://example.com/user/username). Mesmo com rotas de múltiplos caminhos, não faz muito sentido ter um caminho para cada nome de usuário possível, certo? Seria um array infinito!
+Imagine que você queira criar uma rota para páginas de perfil de usuário cujas URLs estão no formato [http://example.com/profile/&lt;username&gt;](http://example.com/user/username). Mesmo com rotas de múltiplos caminhos, não faz muito sentido ter um caminho para cada nome de usuário possível, certo? Seria um array infinito!
 
 Para contornar isso, usamos parâmetros nomeados:
 
