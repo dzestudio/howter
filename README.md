@@ -9,6 +9,8 @@ Howter
 - [Parâmetros nomeados](#parâmetros-nomeados)
 - [Caracter coringa](#caracter-coringa)
 - [Prefixos](#prefixos)
+- [Expressões regulares](#expressões-regulares)
+- [Rotas estendidas](#rotas-estendidas)
 
 ## Instalação
 
@@ -146,3 +148,11 @@ Você pode definir também um prefixo universal que será injetado antes de toda
 ```html
 <script>Howter = Howter || {}; Howter.root = '/subdirectory';</script>
 ```
+
+## Expressões regulares
+
+TBD.
+
+## Rotas estendidas
+
+TBD.
