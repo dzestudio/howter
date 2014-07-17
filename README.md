@@ -54,7 +54,7 @@ Quando o método `Howter.dispatch(path)` é chamado, seu argumento `path`
 
 > **Nota**: o método `dispatch` pode ser chamado quantas vezes for necessário e com qualquer valor de `path`. Você pode, por exemplo, usar uma rota para encapsular instruções executadas diversas vezes e executá-la arbitrariamente sempre que necessário com `Howter.dispatch('/common-functions')`.
 
-Para adicionar funcionalidades específicas a outra URL (uma página de contato, por exemplo), basta definir outra rota:
+Para adicionar funcionalidades específicas a outras URLs, basta definir outras rotas:
 
 ```javascript
 (function (h) {
@@ -67,6 +67,8 @@ Para adicionar funcionalidades específicas a outra URL (uma página de contato,
 
     h.route('/contact', function () {
         alert('You reached the contact page!');
+    }).route('/error', function () { // Rotas encadeadas!
+        alert('You reached the error page!');
     });
 
     h.dispatch(window.location.pathname);
