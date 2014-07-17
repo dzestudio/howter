@@ -3,10 +3,10 @@ Howter
 
 **Howter** é um pequeno roteador criado para organizar a execução do código JavaScript em aplicações web.
 
-- [Instalação](#instalacao)
-- [Funcionamento básico](#funcionamento-basico)
-- [Rotas com múltiplos caminhos](#rotas-com-multiplos-caminhos)
-- [Parâmetros nomeados](#parametros-nomeados)
+- [Instalação](#instalação)
+- [Funcionamento básico](#funcionamento-básico)
+- [Rotas com múltiplos caminhos](#rotas-com-múltiplos-caminhos)
+- [Parâmetros nomeados](#parâmetros-nomeados)
 - [Caracter coringa](#caracter-coringa)
 - [Agrupamento de rotas por prefixo](#agrupamento-de-rotas-por-prefixo)
 
