@@ -7,13 +7,12 @@
     'use strict';
 
     var h = global.Howter || {},
-        currentPrefix = '',
         routes = {},
         routesCount = 0;
 
-    // Ember.js inspired root URL
+    // Ember.js inspired root
     // (http://emberjs.com/guides/routing/#toc_specifying-a-root-url).
-    h.rootURL = h.rootURL || '';
+    h.root = h.root || '';
 
     // Dispatch a path.
     h.dispatch = function (path) {
@@ -32,13 +31,13 @@
     // Laravel inspired route prefixing
     // (http://laravel.com/docs/routing#route-prefixing).
     h.prefix = function (prefix, callback) {
-        var oldPrefix = currentPrefix;
+        var oldRoot = this.root;
 
-        currentPrefix += prefix;
+        this.root += prefix;
 
         callback.call(this);
 
-        currentPrefix = oldPrefix;
+        this.root = oldRoot;
 
         return this;
     };
@@ -62,7 +61,7 @@
 
         for (i in paths) {
             if (paths[i].constructor === String) {
-                paths[i] = h.rootURL + currentPrefix + paths[i];
+                paths[i] = this.root + paths[i];
             }
         }
 
