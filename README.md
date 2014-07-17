@@ -1,51 +1,57 @@
 Howter
 ======
 
-**Howter** é um pequeno roteador criado para organizar a execução do código JavaScript em qualquer aplicação web. Para utilizá-lo, basta baixar a versão mais atualizada do arquivo e incluí-la normalmente através de uma tag `<script>`:
+**Howter** é um pequeno roteador criado para organizar a execução do código JavaScript em aplicações web. Para utilizá-lo, pode-se:
+
+- Baixar a [versão mais atualizada do projeto](https://github.com/dzestudio/howter/archive/master.zip);
+- Instalar com [Bower](http://bower.io): `bower install howter`;
+- Clonar o repositório: `git clone https://github.com/dzestudio/howter.git`.
+
+Em seguida, basta carregar um dos arquivos do diretório `dist` através de uma tag `<script>`:
 
 ```html
+<!-- Código completo -->
+<script src="caminho/completo/até/howter.js"></script>
+
+<!-- Versão minificada -->
 <script src="caminho/completo/até/howter.min.js"></script>
 ```
 
-Incluída a tag `<script>`, Howter ficará disponível através de uma variável global chamada (adivinhe) `Howter`. O próximo passo é definir sua primeira rota:
+## Funcionamento básico
+
+Incluída a tag `<script>`, Howter ficará disponível através de uma variável global chamada (adivinhe) `Howter`. Com ele, seu código é dividido em **rotas** e **callbacks**. Na aplicação mais simples possível, você pode usar rotas para organizar a execução do JavaScript de acordo com a URL acessada pelo usuário. Você pode, por exemplo, perguntar o nome do visitante somente quando ele acessar http://example.com/welcome:
 
 ```javascript
 (function (h) {
 
-    h.route('/', function () {
-        alert('Hello, world!');
+    h.route('/welcome', function () {
+        var name = prompt('What is your name?', 'Harry Potter');
+        
+        alert('Hello, ' + name + '!');
     });
-
-}(Howter));
-```
-
-Uma rota é composta por um ou mais caminhos e uma função. Quando um dos caminhos corresponde ao caminho atual, a função é executada. No exemplo anterior, o usuário verá a mensagem "Hello, world!" se e somente se o caminho for `/`.
-
-Mas afinal, de qual caminho estamos falando? É a URL atual do usuário?
-
-Não necessariamente. Para tornar o roteador reutilizável em qualquer tipo de projeto JavaScript, é preciso especificar explicitamente o caminho atual. Isso é feito através do método `dispatch(path)`:
-
-```javascript
-(function (h) {
-
-    h.route('/', function () {
-        alert('Hello, world!');
-    });
-
+    
     h.dispatch(window.location.pathname);
 
 }(Howter));
+
 ```
 
-Agora está melhor. A mensagem será exibida se o usuário acessar http://localhost/ (ou http://www.foo.com/, http://www.example.com/ etc).
+Como você pode ver pelo exemplo, o método `Howter.route` recebe dois argumentos, justamente a **rota** ("/welcome") e o **callback**, cuja única função é encapsular o código JavaScript que deve ser executado quando a rota for correspondida.
 
-Para adicionar funcionalidades específicas a outro caminho (uma página de contato, por exemplo), basta definir outra rota:
+Quando o método `Howter.dispatch(path)` é chamado, seu argumento `path`
+é comparado com cada uma das rotas definidas. Quando uma rota correspondente é encontrada, o callback é executado e a busca é concluída. No exemplo anterior, isso significa que o prompt perguntando o nome do usuário só será exibido quando `window.location.pathname` for "/welcome".
+
+> **Nota**: o método `dispatch` pode ser chamado quantas vezes for necessário e com qualquer valor de `path`. Você pode, por exemplo, usar uma rota para encapsular instruções executadas diversas vezes e executá-la arbitrariamente sempre que necessário com `Howter.dispatch('/common-functions')`.
+
+Para adicionar funcionalidades específicas a outra URL (uma página de contato, por exemplo), basta definir outra rota:
 
 ```javascript
 (function (h) {
 
-    h.route('/', function () {
-        alert('Hello, world!');
+    h.route('/welcome', function () {
+        var name = prompt('What is your name?', 'Harry Potter');
+        
+        alert('Hello, ' + name + '!');
     });
 
     h.route('/contact', function () {
@@ -56,3 +62,43 @@ Para adicionar funcionalidades específicas a outro caminho (uma página de cont
 
 }(Howter));
 ```
+
+## Rotas com múltiplos caminhos
+
+Às vezes, é necessário executar o mesmo código JavaScript em duas rotas diferentes. Ao invés de definir duas rotas distintas, podemos passar um array de caminhos ao método `route`:
+
+```javascript
+h.route(['/users/list', '/products/list'], function () {
+    // ...
+});
+```
+
+Nesse caso, o callback será executado tanto em http://example.com/users/list quanto em http://example.com/products/list.
+
+## Parâmetros nomeados
+
+Imagine que você queira criar uma rota para páginas de perfil de usuário cujas URLs estão no formato [http://example.com/profile/<username>](http://example.com/user/username). Mesmo com rotas de múltiplos caminhos, não faz muito sentido ter um caminho para cada nome de usuário possível, certo? Seria um array infinito!
+
+Para contornar isso, usamos parâmetros nomeados:
+
+```javascript
+h.route(['/profile/:username'], function (context) {
+    alert('Hello, ' + context.params.username);
+});
+```
+
+Graças a esse trecho variável da URL, o callback será executado com qualquer nome de usuário. Pode-se usar quantos parâmetros nomeados forem necessários e acessar seus valores através do parâmetro `context`, uma instância da classe `Howter.Context` sempre passada como argumento do callback (mesmo quando o omitimos, como nos exemplos anteriores).
+
+O propriedade do contexto que contém todos os parâmetros nomeados pode ser acessada tanto através de `context.params` quanto de `this.params`.
+
+## Caracter coringa
+
+Caracteres coringas são úteis para vincular a execução de callbacks à parte inicial de uma rota, independentemente de como ela termine. Você pode, por exemplo, determinar que todas as rotas iniciadas por "/admin" devam executar determinado código:
+
+```javascript
+h.route(['/admin/*'], function () {
+    // ...
+});
+```
+
+O asterisco é usado como caracter coringa e corresponderá a qualquer combinação de caracteres repassados ao callback no parâmetro nomeado `this.params.splat`.
