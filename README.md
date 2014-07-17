@@ -121,18 +121,18 @@ Quando o número de suas rotas começar a crescer, pode ser uma boa ideia agrup�
 ```javascript
 h.prefix('/admin', function () {
     // A rota abaixo equivale a /admin/users
-    this.route('/users', function () {
+    h.route('/users', function () {
         // ...
     });
     
     // A rota abaixo equivale a /admin/products
-    this.route('/products', function () {
+    h.route('/products', function () {
         // ...
     });
     
-    this.prefix('/foo', function () {
+    h.prefix('/foo', function () {
         // A rota abaixo equivale a /admin/foo/bar
-        this.route('/bar', function () {
+        h.route('/bar', function () {
             // ...
         });
     });
