@@ -103,7 +103,7 @@ h.route('/admin/*', function () {
 
 O asterisco é usado como caracter coringa e corresponderá a qualquer combinação de caracteres repassados ao callback no parâmetro nomeado `this.params.splat`.
 
-## Agrupamento de rotas com prefixos
+## Agrupamento de rotas por prefixo
 
 Quando o número de suas rotas começar a crescer, pode ser uma boa ideia agrupá-las em prefixos comuns. Para isso, use o método `Howter.prefix()`:
 
