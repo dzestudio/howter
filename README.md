@@ -82,21 +82,21 @@ Imagine que você queira criar uma rota para páginas de perfil de usuário cuja
 Para contornar isso, usamos parâmetros nomeados:
 
 ```javascript
-h.route(['/profile/:username'], function (context) {
+h.route('/profile/:username', function (context) {
     alert('Hello, ' + context.params.username);
 });
 ```
 
 Graças a esse trecho variável da URL, o callback será executado com qualquer nome de usuário. Pode-se usar quantos parâmetros nomeados forem necessários e acessar seus valores através do parâmetro `context`, uma instância da classe `Howter.Context` sempre passada como argumento do callback (mesmo quando o omitimos, como nos exemplos anteriores).
 
-O propriedade do contexto que contém todos os parâmetros nomeados pode ser acessada tanto através de `context.params` quanto de `this.params`.
+A propriedade do contexto que contém todos os parâmetros nomeados pode ser acessada tanto através de `context.params` quanto de `this.params`.
 
 ## Caracter coringa
 
 Caracteres coringas são úteis para vincular a execução de callbacks à parte inicial de uma rota, independentemente de como ela termine. Você pode, por exemplo, determinar que todas as rotas iniciadas por "/admin" devam executar determinado código:
 
 ```javascript
-h.route(['/admin/*'], function () {
+h.route('/admin/*', function () {
     // ...
 });
 ```
