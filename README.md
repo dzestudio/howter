@@ -94,7 +94,7 @@ Para contornar isso, usamos parâmetros nomeados:
 
 ```javascript
 h.route('/profile/:username', function (context) {
-    alert('Hello, ' + context.params.username);
+    alert('Hello, ' + context.params.username + '!');
 });
 ```
 
