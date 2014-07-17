@@ -50,7 +50,7 @@ Incluída a tag `<script>`, Howter ficará disponível através de uma variável
 Como você pode ver pelo exemplo, o método `Howter.route` recebe dois argumentos, justamente a **rota** ("/welcome") e o **callback**, cuja única função é encapsular o código JavaScript que deve ser executado quando a rota for correspondida.
 
 Quando o método `Howter.dispatch(path)` é chamado, seu argumento `path`
-é comparado com cada uma das rotas definidas. Quando uma rota correspondente é encontrada, o callback é executado e a busca é concluída. No exemplo anterior, isso significa que o prompt perguntando o nome do usuário só será exibido quando `window.location.pathname` for "/welcome".
+é comparado com cada uma das rotas definidas. Sempre que uma rota correspondente é encontrada, o callback é executado. No exemplo anterior, isso significa que o prompt perguntando o nome do usuário só será exibido quando `window.location.pathname` for "/welcome".
 
 > **Nota**: o método `dispatch` pode ser chamado quantas vezes for necessário e com qualquer valor de `path`. Você pode, por exemplo, usar uma rota para encapsular instruções executadas diversas vezes e executá-la arbitrariamente sempre que necessário com `Howter.dispatch('/common-functions')`.
 
