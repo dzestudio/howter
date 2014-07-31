@@ -5,6 +5,30 @@
 
     var h = global.Howter || {};
 
+    h.Context = function (matches, paramNames) {
+
+        var i;
+
+        this.path = matches.input;
+        this.params = {};
+
+        for (i = 0; i < matches.length; i++) {
+            this.params[paramNames[i] || i] = matches[i];
+        }
+
+    };
+
+    // Export.
+    global.Howter = h;
+
+}(this));
+/*jslint ass: true, forin: true, plusplus: true, regexp: true */
+(function (global) {
+
+    'use strict';
+
+    var h = global.Howter || {};
+
     h.Route = function (paths, callback) {
 
         var i,
@@ -46,7 +70,7 @@
 
         this.paths = [];
 
-        for (i in paths) {
+        for (i = 0; i < paths.length; i++) {
            this.paths.push(parsePath(paths[i]));
         }
 
@@ -63,7 +87,7 @@
         this.test = function (path) {
             var i, matches, context;
 
-            for (i in this.paths) {
+            for (i = 0; i < this.paths.length; i++) {
                 if ((matches = path.match(this.paths[i])) !== null) {
                     // Remove the entire input from the matches.
                     matches.shift();
@@ -79,30 +103,6 @@
                 }
             }
         };
-
-    };
-
-    // Export.
-    global.Howter = h;
-
-}(this));
-/*jslint ass: true, forin: true, plusplus: true, regexp: true */
-(function (global) {
-
-    'use strict';
-
-    var h = global.Howter || {};
-
-    h.Context = function (matches, paramNames) {
-
-        var i;
-
-        this.path = matches.input;
-        this.params = {};
-
-        for (i = 0; i < matches.length; i++) {
-            this.params[paramNames[i] || i] = matches[i];
-        }
 
     };
 
@@ -171,7 +171,7 @@
             paths = [paths];
         }
 
-        for (i in paths) {
+        for (i = 0; i < paths.length; i++) {
             if (paths[i].constructor === String) {
                 paths[i] = this.root + paths[i];
             }
