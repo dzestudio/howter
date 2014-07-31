@@ -59,7 +59,7 @@
             paths = [paths];
         }
 
-        for (i in paths) {
+        for (i = 0; i < paths.length; i++) {
             if (paths[i].constructor === String) {
                 paths[i] = this.root + paths[i];
             }

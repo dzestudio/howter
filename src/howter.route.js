@@ -46,7 +46,7 @@
 
         this.paths = [];
 
-        for (i in paths) {
+        for (i = 0; i < paths.length; i++) {
            this.paths.push(parsePath(paths[i]));
         }
 
@@ -63,7 +63,7 @@
         this.test = function (path) {
             var i, matches, context;
 
-            for (i in this.paths) {
+            for (i = 0; i < this.paths.length; i++) {
                 if ((matches = path.match(this.paths[i])) !== null) {
                     // Remove the entire input from the matches.
                     matches.shift();
