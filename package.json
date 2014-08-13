@@ -1,0 +1,28 @@
+{
+  "name": "howter",
+  "version": "0.2.2",
+  "description": "Router for JavaScript code organization.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dzestudio/howter.git"
+  },
+  "keywords": [
+    "howter",
+    "route",
+    "organization"
+  ],
+  "author": "LF Bittencourt <lf@dzestudio.com.br>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dzestudio/howter/issues"
+  },
+  "homepage": "https://github.com/dzestudio/howter",
+  "devDependencies": {
+    "karma": "^0.12.21",
+    "karma-chrome-launcher": "^0.1.4",
+    "karma-jasmine": "~0.2.0"
+  }
+}
