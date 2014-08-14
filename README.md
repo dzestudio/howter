@@ -146,7 +146,7 @@ h.prefix('/admin', function () {
 Você pode definir também um prefixo universal que será injetado antes de todas as rotas. Em rotas baseadas em URL, por exemplo, essa propriedade (`Howter.root`) pode ser setada assincronamente no HTML e evitar que você tenha que alterar todas as rotas quando a aplicação for movida para um subdiretório:
 
 ```html
-<script>Howter = Howter || {}; Howter.root = '/subdirectory';</script>
+<script>Howter = window.Howter || {}; Howter.root = '/subdirectory';</script>
 ```
 
 ## Expressões regulares
