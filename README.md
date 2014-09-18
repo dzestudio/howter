@@ -11,6 +11,7 @@ Howter
 - [Prefixos](#prefixos)
 - [Expressões regulares](#expressões-regulares)
 - [Rotas estendidas](#rotas-estendidas)
+- [Compartilhamento de dados](#compartilhamento-de-dados)
 
 ## Instalação
 
@@ -39,10 +40,10 @@ Incluída a tag `<script>`, Howter ficará disponível através de uma variável
 
     h.route('/welcome', function () {
         var name = prompt('What is your name?', 'Harry Potter');
-        
+
         alert('Hello, ' + name + '!');
     });
-    
+
     h.dispatch(window.location.pathname);
 
 }(Howter));
@@ -63,7 +64,7 @@ Para adicionar funcionalidades específicas a outras URLs, basta definir outras 
 
     h.route('/welcome', function () {
         var name = prompt('What is your name?', 'Harry Potter');
-        
+
         alert('Hello, ' + name + '!');
     });
 
@@ -128,12 +129,12 @@ h.prefix('/admin', function () {
     h.route('/users', function () {
         // ...
     });
-    
+
     // A rota abaixo equivale a /admin/products
     h.route('/products', function () {
         // ...
     });
-    
+
     h.prefix('/foo', function () {
         // A rota abaixo equivale a /admin/foo/bar
         h.route('/bar', function () {
@@ -154,5 +155,9 @@ Você pode definir também um prefixo universal que será injetado antes de toda
 TBD.
 
 ## Rotas estendidas
+
+TBD.
+
+## Compartilhamento de dados
 
 TBD.

@@ -120,7 +120,8 @@
 
     var h = global.Howter || {},
         routes = {},
-        routesCount = 0;
+        routesCount = 0,
+        shared = {};
 
     // Ember.js inspired root
     // (http://emberjs.com/guides/routing/#toc_specifying-a-root-url).
@@ -156,7 +157,6 @@
 
     // Get a route or set a new one.
     h.route = function (paths, callback, name) {
-
         var i;
 
         // Getter...
@@ -183,8 +183,20 @@
         routesCount++;
 
         return this;
-
     };
+
+    // Universal data sharing.
+    h.share = function (key, data) {
+        // Getter...
+        if (data === undefined) {
+            return shared[key];
+        }
+
+        // ... or setter.
+        shared[key] = data;
+
+        return this;
+    }
 
     // Export.
     global.Howter = h;
