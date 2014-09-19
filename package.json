@@ -1,0 +1,9 @@
+{
+  "name": "howter",
+  "version": "0.3.0",
+  "devDependencies": {
+    "grunt": "latest",
+    "grunt-contrib-concat": "latest",
+    "grunt-contrib-uglify": "latest"
+  }
+}
