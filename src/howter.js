@@ -1,6 +1,3 @@
-// @prepros-prepend howter.context.js
-// @prepros-prepend howter.route.js
-
 /*jslint ass: true, forin: true, plusplus: true, regexp: true */
 (function (global) {
 
