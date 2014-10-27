@@ -55,7 +55,7 @@
         // This function gives full access to change any aspects of the route.
         // It is very handy to wrap callbacks.
         this.extend = function (extension) {
-            extension.call(this, this);
+            extension.call(this, this.callback);
         };
 
         // Checks the path against each route's path.
