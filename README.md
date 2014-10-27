@@ -156,7 +156,27 @@ TBD.
 
 ## Rotas estendidas
 
-TBD.
+É possível estender ou mesmo redefinir completamente um callback usando o método `Howter.extend(extension)`. Para ver na prática sua utilidade, vamos estender nosso exemplo de [parâmetros nomeados](#parâmetros-nomeados):
+
+```javascript
+h.route('/profile/:username', function (context) {
+    alert('Hello, ' + context.params.username + '!');
+}, 'profile');
+```
+
+Note que adicionamos um terceiro parâmetro à declaração da rota: um nome. Isso é necessário porque somente nomeando a rota podemos recuperá-la e estendê-la:
+
+```javascript
+h.route('profile').extend(function (original) {
+    this.callback = function() {
+        this.params.username = 'Amazing ' + this.params.username;
+
+        original.call(this, this);
+    };
+});
+```
+
+A extensão é uma função que recebe o callback original como primeiro argumento e seu contexto na variável `this`. O exemplo acima altera o contexto concatenando a string "Amazing " ao parâmetro `name` e depois chama o callback original, recebido no argumento `original`.
 
 ## Compartilhamento de dados
 
